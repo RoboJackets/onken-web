@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
-import Nav from '../components/nav';
-import { actions } from './actions';
+import css from './styles.less';
+import SideNav from '../components/sidenav';
+import { fetchUser } from './actions';
 import NProgress from 'nprogress';
-import Router from 'next/router';
+import Router, { withRouter } from 'next/router';
 
 Router.onRouteChangeStart = (url) => {
   if (window.location.pathname !== url)
@@ -13,32 +13,21 @@ Router.onRouteChangeStart = (url) => {
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
-const PageContainer = styled.div`
-  flex: 1;
-  overflow-y: scroll;
-  height: 100vh;
-  padding-top: 90px;
-`
-
 class Layout extends Component {
   componentDidMount() {
-    this.props.dispatch(actions.fetchUser())
+    this.props.dispatch(fetchUser())
   }
   render() {
+    const { router } = this.props
     return (
-      <Container>
-        <Nav />
-        <PageContainer>
+      <div className={css.container}>
+        <SideNav path={router ? router.asPath : ''} />
+        <div className={css.pageContainer}>
           {this.props.children}
-        </PageContainer>
-      </Container>
+        </div>
+      </div>
     )
   }
 }
 
-export default connect()(Layout)
+export default connect()(withRouter(Layout))

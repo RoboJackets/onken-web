@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { fetchAdmin } from './fetch';
 import Modal from 'antd/lib/modal';
 import Select from 'antd/lib/select';
 import { CustomTable, PageHeader } from '../../components';
-import { fetchTableData } from './fetch';
+
+const MODAL_TITLE = "Manage user permissions"
 
 const ROLES = [
   "Administrator",
@@ -12,20 +14,19 @@ const ROLES = [
 ]
 
 export default class UserManagement extends Component {
-  static async getInitialProps() {
-    const res = await fetchTableData()
-    return {
-      tableData: res,
-    }
-  }
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
-      tableData: props.tableData,
       modalData: {},
       modalVisible: false,
       modalConfirmLoading: false,
       modalSelectedRole: '',
+    }
+  }
+  static async getInitialProps() {
+    const res = await fetchAdmin()
+    return {
+      jsonResult: res,
     }
   }
   onRowClickHandler = (data) => {
@@ -36,13 +37,7 @@ export default class UserManagement extends Component {
     })
   }
   onModalSave = () => {
-    const { modalSelectedRole, modalData, tableData } = this.state
-    const newTableData = tableData.map((item, index) =>
-      index === modalData.key - 1 ? { ...item, Role: modalSelectedRole } : item)
-    this.setState({
-      tableData: newTableData,
-    })
-    console.table(this.state.tableData)
+    console.table(this.state)
   }
   onModalCancel = () => {
     this.setState({
@@ -55,11 +50,12 @@ export default class UserManagement extends Component {
     })
   }
   render() {
-    const { modalVisible, modalConfirmLoading, modalSelectedRole, tableData, modalData } = this.state
+    const { jsonResult } = this.props
+    const { modalVisible, modalConfirmLoading, modalSelectedRole, modalData } = this.state
     return (
       <React.Fragment>
         <PageHeader name="User Management" />
-        <CustomTable data={tableData} onRowClickHandler={this.onRowClickHandler} />
+        <CustomTable data={jsonResult} onRowClickHandler={this.onRowClickHandler} />
         <Modal title={modalData.Username}
           visible={modalVisible}
           confirmLoading={modalConfirmLoading}

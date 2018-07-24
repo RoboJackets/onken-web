@@ -1,0 +1,48 @@
+@import '../../global-styles';
+
+@width: 300px;
+
+.container {
+    height: 100vh;
+    width: @width;
+    padding-top: 90px;
+    background-color: @primaryDark;
+    position: relative;
+    margin-left: -@width;
+    opacity: 0.5;
+    transition: margin-left 0.25s ease-out, opacity 0.25s ease-out;
+}
+
+.expanded {
+    margin-left: 0;
+    opacity: 1;
+}
+
+.navBar {
+    position: absolute;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 1000;
+
+    .navMenuContainer {
+        min-width: @width;
+        padding: 30px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .logo {
+            transition: fill 0.25s;
+        }
+        .logoDark {
+            .logo();
+            fill: @primaryDark;
+        }
+    }
+
+    .breadcrumb {
+        padding-left: 30px;
+    }
+}

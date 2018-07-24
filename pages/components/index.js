@@ -1,9 +1,9 @@
-import Nav from './nav';
+import Sidenav from './sidenav';
 import CustomTable from './customTable';
 import PageHeader from './pageHeader';
 
 export {
-  Nav,
+  Sidenav,
   CustomTable,
   PageHeader,
 }
