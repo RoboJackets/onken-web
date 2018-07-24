@@ -1,0 +1,37 @@
+[
+  {
+    "Username": "adao6",
+    "FirstName": "Amy",
+    "LastName": "Dao",
+    "Email": "amy.dao@gatech.edu",
+    "Role": "Administrator"
+  },
+  {
+    "Username": "bholmes34",
+    "FirstName": "Benjamin",
+    "LastName": "Holmes",
+    "Email": "bholmes34@gatech.edu",
+    "Role": "Project Manager"
+  },
+  {
+    "Username": "cwehmeyer3",
+    "FirstName": "Carrie",
+    "LastName": "Wehmeyer",
+    "Email": "carrie.weh@gatech.edu",
+    "Role": "Requestor"
+  },
+  {
+    "Username": "ddowning3",
+    "FirstName": "Dallas",
+    "LastName": "Downing",
+    "Email": "dallasd@gatech.edu",
+    "Role": "Read only"
+  },
+  {
+    "Username": "dsloan6",
+    "FirstName": "Dustin",
+    "LastName": "Sloan",
+    "Email": "dsloan@gatech.edu",
+    "Role": "Requestor"
+  }
+]

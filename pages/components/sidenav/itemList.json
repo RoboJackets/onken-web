@@ -1,0 +1,24 @@
+[
+  {
+    "link": "/",
+    "label": "Profile",
+    "icon": "profile"
+  },
+  {
+    "link": "/",
+    "label": "Teams",
+    "icon": "teams"
+  },
+  {
+    "link": "/admin",
+    "label": "Admin Tools",
+    "icon": "admin-tools",
+    "subItemLinksOnly": true,
+    "subItems": [
+      {
+        "link": "/user-management",
+        "label": "User Management"
+      }
+    ]
+  }
+]

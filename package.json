@@ -1,0 +1,35 @@
+{
+  "name": "onken-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "next start"
+  },
+  "theme": {
+    "primary-color": "#F2D600"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zeit/next-less": "^0.3.0",
+    "antd": "^3.6.6",
+    "express": "^4.16.3",
+    "isomorphic-unfetch": "^2.0.0",
+    "less": "^3.7.1",
+    "next": "^6.1.1",
+    "next-redux-wrapper": "^2.0.0",
+    "nprogress": "^0.2.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.1",
+    "redux": "^3.6.0",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.1.0"
+  }
+}
