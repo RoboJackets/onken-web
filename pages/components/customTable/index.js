@@ -3,14 +3,7 @@ import React, { Component } from 'react';
 import css from './styles.less';
 
 export default class CustomTable extends Component {
-  constructor() {
-    super()
-    this.state = {
-      columns: [],
-      data: [],
-    }
-  }
-  componentWillMount() {
+  getFormattedTableData = () => {
     const { data } = this.props
 
     if (!data || !data.length)
@@ -33,15 +26,15 @@ export default class CustomTable extends Component {
       }
     })
 
-    this.setState({
+    return {
       columns: columns,
       dataSource: dataSource,
-    })
+    }
   }
 
   render() {
     const { onRowClickHandler } = this.props
-    const { dataSource, columns } = this.state
+    const { dataSource, columns } = this.getFormattedTableData()
 
     return (dataSource && columns) ? (
       <div className={css.container}>

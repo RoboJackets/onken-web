@@ -5,6 +5,7 @@ import SideNav from '../components/sidenav';
 import { fetchUser } from './actions';
 import NProgress from 'nprogress';
 import Router, { withRouter } from 'next/router';
+import Breadcrumbs from '../components/breadcrumbs';
 
 Router.onRouteChangeStart = (url) => {
   if (window.location.pathname !== url)
@@ -21,8 +22,9 @@ class Layout extends Component {
     const { router } = this.props
     return (
       <div className={css.container}>
-        <SideNav path={router ? router.asPath : ''} />
+        <SideNav />
         <div className={css.pageContainer}>
+          <Breadcrumbs path={router ? router.asPath : ''} />
           {this.props.children}
         </div>
       </div>

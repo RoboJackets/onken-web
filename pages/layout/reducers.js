@@ -1,9 +1,7 @@
 import { actionTypes } from './actions';
 
 const initialState = {
-  user: {
-    name: "george"
-  },
+  user: {},
   loading: true,
   failed: false,
 }
