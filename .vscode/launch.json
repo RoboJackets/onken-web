@@ -12,12 +12,11 @@
       "type": "node",
       "request": "launch",
       "name": "Next: Node",
-      "runtimeExecutable": "next",
+      "runtimeExecutable": "node",
       "runtimeArgs": [
-        "--inspect"
+        "--inspect",
+        "node_modules/next/dist/bin/next"
       ],
-      "port": 9229,
-      "console": "integratedTerminal"
     }
   ],
   "compounds": [
