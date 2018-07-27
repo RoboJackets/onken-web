@@ -1,5 +1,4 @@
-@import '../../../global-styles.less';
-
+@import '../../../../global-styles.less';
 .containerExpanded {
   .container();
   .bar1 {
@@ -18,7 +17,6 @@
   width: 30px;
   margin-top: 5px;
   margin-right: 15px;
-
   &:hover {
     .bar1:before {
       width: 100%;
@@ -30,7 +28,6 @@
       width: 100%;
     }
   }
-
   .bar(@width) {
     position: relative;
     border-radius: 2px;
@@ -38,7 +35,6 @@
     width: @width;
     background-color: @primaryDark;
     margin-bottom: 4px;
-
     &:before {
       content: "";
       position: absolute;

@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
 import Breadcrumb from 'antd/lib/breadcrumb';
-import itemList from '../sidenav/itemList.json';
+import { withRouter } from 'next/router';
+import * as navItemList from '../navItemList.json';
 
-const Breadcrumbs = (props) => {
-  const splitPath = props.path.split('/').filter(p => p !== '')
+const Breadcrumbs = ({ router }) => {
+  const splitPath = router && router.asPath ? router.asPath.split('/').filter(p => p !== '') : ''
   return (
     <div className="container">
       <Breadcrumb>
@@ -19,22 +19,17 @@ const Breadcrumbs = (props) => {
       </Breadcrumb>
       <style jsx>{`
         .container {
-          padding: 30px;
-          padding-top: 45px;
+          padding-left: 30px;
         }
         `}</style>
     </div>
   )
 }
 
-Breadcrumbs.propTypes = {
-  path: PropTypes.string.isRequired,
-}
-
 const getLabelFromLink = (link) => {
   link = '/' + link
   let subItemVal = ''
-  const itemVal = itemList.find(item => {
+  const itemVal = navItemList.find(item => {
     if (item.link !== link && item.subItems) {
       subItemVal = item.subItems.find(subItem => subItem.link === link)
     }
@@ -45,4 +40,4 @@ const getLabelFromLink = (link) => {
   return subItemVal.label ? subItemVal.label : itemVal.label
 }
 
-export default Breadcrumbs;
+export default withRouter(Breadcrumbs);

@@ -7,14 +7,8 @@ export const actionTypes = {
   USER_LOAD_FAIL: 'LOAD_USER_FAIL',
 }
 
-const actions = {
+export const actions = {
   fetchUser: () => dispatch => {
     return dispatch({ type: actionTypes.USER_LOAD_SUCCESS, payload: user });
   }
 }
-
-export function fetchUser() {
-  return (dispatch) => dispatch({ type: actionTypes.USER_LOAD_SUCCESS, payload: user });
-}
-
-export default actions;

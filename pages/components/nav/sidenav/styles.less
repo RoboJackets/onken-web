@@ -1,0 +1,16 @@
+@import '../../../global-styles';
+.container {
+  height: 100vh;
+  width: @sidenav-width;
+  padding-top: 90px;
+  background-color: @primaryDark;
+  position: relative;
+  margin-left: -@sidenav-width;
+  opacity: 0.5;
+  transition: margin-left 0.25s ease-out, opacity 0.25s ease-out;
+}
+
+.expanded {
+  margin-left: 0;
+  opacity: 1;
+}

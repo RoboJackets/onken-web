@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import css from './styles.less';
-import NavIcon from '../navIcon';
+import NavIcon from '../../navIcon';
 
 export default class NavItem extends Component {
   constructor() {

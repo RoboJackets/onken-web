@@ -1,11 +1,9 @@
-import Sidenav from './sidenav';
+import Nav from './nav';
 import CustomTable from './customTable';
 import PageHeader from './pageHeader';
-import Breadcrumbs from './breadcrumbs';
 
 export {
-  Sidenav,
+  Nav,
   CustomTable,
   PageHeader,
-  Breadcrumbs,
 }
