@@ -1,29 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import css from './styles.less';
 import * as navItemList from '../navItemList.json';
 import NavItem from './navItem';
 
-const negative = (prop) => "-" + prop
-
-const Container = styled.div`
-  height: 100vh;
-  width: ${props => props.theme.sidenavWidth};
-  padding-top: 90px;
-  background-color: ${props => props.theme.primaryDark[1]};
-  position: relative;
-  margin-left: ${props => props.expanded ? 0 : negative(props.theme.sidenavWidth)};
-  opacity: ${props => props.expanded ? 1 : 0.5};
-  transition: margin-left 0.25s ease-out, opacity 0.25s ease-out;
-`
-
 const Sidenav = ({ expanded, user }) => (
-  <Container expanded={expanded}>
+  <div className={`${css.container} ${expanded && css.expanded}`}>
     {navItemList.map((item, index) => (
       <NavItem key={index} {...item} />
     ))}
-  </Container>
+  </div>
 )
 
 Sidenav.propTypes = {

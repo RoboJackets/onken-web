@@ -4,8 +4,6 @@ import Select from 'antd/lib/select';
 import { CustomTable, PageHeader } from '../../components';
 import { fetchTableData } from './fetch';
 
-const MODAL_TITLE = "Manage user permissions"
-
 const ROLES = [
   "Administrator",
   "Project Manager",

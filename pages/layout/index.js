@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import css from './styles.less';
-import SideNav from '../components/sidenav';
-import { fetchUser } from './actions';
+import Nav from '../components/nav';
+import { actions } from './actions';
 import NProgress from 'nprogress';
-import Router, { withRouter } from 'next/router';
-import Breadcrumbs from '../components/breadcrumbs';
+import Router from 'next/router';
 
 Router.onRouteChangeStart = (url) => {
   if (window.location.pathname !== url)
@@ -16,15 +15,13 @@ Router.onRouteChangeError = () => NProgress.done()
 
 class Layout extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchUser())
+    this.props.dispatch(actions.fetchUser())
   }
   render() {
-    const { router } = this.props
     return (
       <div className={css.container}>
-        <SideNav />
+        <Nav />
         <div className={css.pageContainer}>
-          <Breadcrumbs path={router ? router.asPath : ''} />
           {this.props.children}
         </div>
       </div>
@@ -32,4 +29,4 @@ class Layout extends Component {
   }
 }
 
-export default connect()(withRouter(Layout))
+export default connect()(Layout)

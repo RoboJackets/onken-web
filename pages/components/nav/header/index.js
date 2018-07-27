@@ -1,38 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import css from './styles.less';
 import NavIcon from '../navIcon';
-import { MenuIcon, Breadcrumbs } from './components';
-
-const Container = styled.div`
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  z-index: 1000;
-`
-
-const NavMenuContainer = styled.div`
-  min-width: ${props => props.width};
-  padding: 30px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`
-
-const StyledNavIcon = styled(NavIcon)`
-  transition: fill 0.25s;
-  ${props => !props.expanded && `fill: ${props.theme.primaryDark[1]}`}
-`
+import MenuIcon from './menuIcon';
+import Breadcrumbs from './breadcrumbs';
 
 const Header = ({ onMenuClicked, expanded }) => (
-  <Container>
-    <NavMenuContainer width="300px">
+  <div className={css.container}>
+    <div className={css.navMenuContainer}>
       <MenuIcon onClick={onMenuClicked} expanded={expanded} />
-      <StyledNavIcon name="onken-logo" expanded={expanded} />
-    </NavMenuContainer>
+      <NavIcon name="onken-logo" className={expanded ? css.logo : css.logoDark} />
+    </div>
     <Breadcrumbs />
-  </Container>
+  </div>
 )
 
 Header.propTypes = {
