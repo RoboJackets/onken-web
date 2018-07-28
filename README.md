@@ -93,4 +93,4 @@ If you're using [VS Code](https://code.visualstudio.com/), copy the following in
 This launch configuration should be portable to other text editors / environments.
 [This Article](https://github.com/Microsoft/vscode-recipes/tree/master/Next-js) is another great resource on debugging NextJS apps.
 
-## That's it. Happy hacking!
+## That's it. Happy hacking! :tada:
