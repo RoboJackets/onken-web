@@ -9,8 +9,6 @@ This is a project adhering to modern web standards (as of the application's ince
 
 This project uses the [NextJS](https://nextjs.org/) framework, built on ReactJS and Node. This allows server side rendering, proxying, and url path customization from the frontend without any backend dependencies.
 
-Nothing needs to be set up on your machine to run the application, and experience in Node is not necessary.
-
 ### Redux
 Management of global state is handled by [Redux](https://redux.js.org/) middleware. This keeps global object logic separate from the props and state managed by ReactJS.
 
@@ -23,7 +21,10 @@ The [Ant Design](https://ant.design/) library is used for shared resources like 
 It provides a combination of React Components and styling to make inserting UI elements quick and easy.
 
 ## Getting started
-This project uses NPM (node package manager) to manage dependencies. To install these dependencies, `cd` to your local [clone](https://services.github.com/on-demand/github-cli/clone-repo-cli) of this repository and run either `npm install` or `yarn`. This should generate a `node_modules` folder in the project directory.
+
+**Make sure you have the latest version of [Node](https://github.com/Microsoft/vscode-recipes/tree/master/Next-js) installed on your machine before running this application.**
+
+This project uses NPM (node package manager) to manage dependencies. To install dependencies for this project, `cd` to your local [clone](https://services.github.com/on-demand/github-cli/clone-repo-cli) of this repository and run either `npm install` or `yarn`. This should generate a `node_modules` folder in your project directory.
 
 ```
 git clone git@github.com:Holben888/Onken-Frontend.git
