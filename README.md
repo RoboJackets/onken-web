@@ -8,14 +8,14 @@ This project uses the [NextJS](https://nextjs.org/) framework, built on ReactJS 
 
 Nothing needs to be set up on your machine to run the application, and experience in Node is not necessary.
 
-### Redux
+#### Redux
 Management of global state is handled by [Redux](https://redux.js.org/) middleware. This keeps global object logic separate from the props and state managed by ReactJS.
 
-### Styling
+## Styling
 Global style variables and component stylesheets are managed by a combination of the [LESS CSS preprocessor](http://lesscss.org/) + [CSS Modules](https://github.com/css-modules/css-modules) and [styled-jsx](https://github.com/zeit/styled-jsx).
 LESS CSS is used by a majority of the application, while styled-jsx is included for inline style adjustments.
 
-### Ant Design
+#### Ant Design
 The [Ant Design](https://ant.design/) library is used for shared resources like tables, buttons, icons, and other UI elements.
 It provides a combination of React Components and styling to make inserting UI elements quick and easy.
 
@@ -48,7 +48,7 @@ Default port configuration, proxying, and other server / runtime management can 
 Since NextJS uses both a ReactJS process and a Node process to run, debugging requires setup for both processes.
 If you're using [VS Code](https://code.visualstudio.com/), copy the following into the `launch.json` file found in the `.vscode` directory:
 
-```json
+```
 {
   "version": "0.2.0",
   "configurations": [
