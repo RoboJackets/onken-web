@@ -1,0 +1,37 @@
+[
+  {
+    "Username": "tester105",
+    "FirstName": "Mister",
+    "LastName": "Test",
+    "Email": "test1@gatech.edu",
+    "Role": "Administrator"
+  },
+  {
+    "Username": "fakey05",
+    "FirstName": "Ben",
+    "LastName": "Holmes",
+    "Email": "person@gatech.edu",
+    "Role": "Project Manager"
+  },
+  {
+    "Username": "anotherone",
+    "FirstName": "John",
+    "LastName": "Doe",
+    "Email": "john@gatech.edu",
+    "Role": "Requestor"
+  },
+  {
+    "Username": "person35",
+    "FirstName": "Jake",
+    "LastName": "Paul",
+    "Email": "pauler@gatech.edu",
+    "Role": "Read only"
+  },
+  {
+    "Username": "fake",
+    "FirstName": "Logan",
+    "LastName": "Paul",
+    "Email": "logang@gatech.edu",
+    "Role": "Requestor"
+  }
+]
