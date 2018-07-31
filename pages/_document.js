@@ -1,7 +1,23 @@
 import Document, { Head, Main, NextScript } from 'next/document';
-import './styles.less';
+import { ServerStyleSheet, injectGlobal } from 'styled-components';
+
+injectGlobal`
+  body {
+    overflow: hidden;
+  }
+
+  * {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif !important;
+  }
+`
 
 export default class MyDocument extends Document {
+  static getInitialProps({ renderPage }) {
+    const sheet = new ServerStyleSheet()
+    const page = renderPage(App => props => sheet.collectStyles(<App {...props} />))
+    const styleTags = sheet.getStyleElement()
+    return { ...page, styleTags }
+  }
   render() {
     return (
       <html>
@@ -11,6 +27,7 @@ export default class MyDocument extends Document {
           <link rel="stylesheet" href="/static/nprogress.css" />
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.7.0/antd.css" />
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" />
+          {this.props.styleTags}
         </Head>
         <body>
           <Main />

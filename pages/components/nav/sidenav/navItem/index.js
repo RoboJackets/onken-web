@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
-import css from './styles.less';
+import * as styles from './styles';
 import NavIcon from '../../navIcon';
+
+const { Button, Content, DropdownIconWrapper, StyledNavIcon } = styles
 
 export default class NavItem extends Component {
   constructor() {
@@ -23,25 +25,24 @@ export default class NavItem extends Component {
     return (
       <React.Fragment>
         <Link href={subItemLinksOnly ? '' : link}>
-          <button className={css.navItem} onClick={this.onItemClick}>
+          <Button onClick={this.onItemClick}>
             <NavIcon name={icon} />
-            <div className={css.content}>
+            <Content>
               {label}
-            </div>
-            {subItems && <div className={css.dropdownIconWrapper}>
-              <NavIcon name="dropdown-arrow"
-                className={itemExpanded ? css.dropdownIconActive : css.dropdownIcon} />
-            </div>}
-          </button>
+            </Content>
+            {subItems && <DropdownIconWrapper>
+              <StyledNavIcon name="dropdown-arrow" active={itemExpanded} />
+            </DropdownIconWrapper>}
+          </Button>
         </Link>
 
         {itemExpanded && subItems.map((subItem, index) => (
           <Link key={index} href={link + subItem.link}>
-            <div className={css.navSubItem}>
-              <div className={css.content}>
+            <Button subItem>
+              <Content>
                 {subItem.label}
-              </div>
-            </div>
+              </Content>
+            </Button>
           </Link>
         ))}
       </React.Fragment>
