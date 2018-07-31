@@ -10,7 +10,7 @@ export const DropdownIconWrapper = styled.div`
 `
 
 export const StyledNavIcon = styled(NavIcon)`
-  ${props => props.active && `transform: rotate(180deg)`};
+  ${props => props.active && css`transform: rotate(180deg)`};
   margin-right: 30px;
   overflow: visible;
   transition: 0.25s;

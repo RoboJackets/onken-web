@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import { ThemeProvider, css } from 'styled-components';
 import Layout from './layout';
 
+import './antd-styles.less';
+
 const theme = {
   primaryDark: {
     1: '#333',
