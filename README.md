@@ -13,8 +13,14 @@ This project uses the [NextJS](https://nextjs.org/) framework, built on ReactJS 
 Management of global state is handled by [Redux](https://redux.js.org/) middleware. This keeps global object logic separate from the props and state managed by ReactJS.
 
 ### Styling
+<<<<<<< HEAD
 Global style variables and component stylesheets are managed by a combination of the [LESS CSS preprocessor](http://lesscss.org/) + [CSS Modules](https://github.com/css-modules/css-modules) and [styled-jsx](https://github.com/zeit/styled-jsx).
 LESS CSS is used by a majority of the application, while styled-jsx is included for inline style adjustments.
+=======
+Global style variables and component stylesheets are managed by [Styled Components](https://www.styled-components.com/). This is a CSS-in-JS solution with globals managed using the React Context API.
+
+LESS CSS is used for importing and customizing the Ant Design stylesheet.
+>>>>>>> 2029e32d38075eec88563cbd04d701dd5bac07b5
 
 ### Ant Design
 The [Ant Design](https://ant.design/) library is used for shared resources like tables, buttons, icons, and other UI elements.
@@ -26,7 +32,11 @@ It provides a combination of React Components and styling to make inserting UI e
 
 This project uses NPM (node package manager) to manage dependencies. To install dependencies for this project, `cd` to your local [clone](https://services.github.com/on-demand/github-cli/clone-repo-cli) of this repository and run either `npm install` or `yarn`. This should generate a `node_modules` folder in your project directory.
 
+<<<<<<< HEAD
 ```
+=======
+```bash
+>>>>>>> 2029e32d38075eec88563cbd04d701dd5bac07b5
 git clone git@github.com:Holben888/Onken-Frontend.git
 cd Onken-Frontend
 yarn
@@ -40,7 +50,11 @@ The app will also rebuild whenever project file changes are saved.
 #### Running in production mode
 If you want to build and run the project manually, run the following commands:
 
+<<<<<<< HEAD
 ```
+=======
+```bash
+>>>>>>> 2029e32d38075eec88563cbd04d701dd5bac07b5
 npm run build
 npm run start
 ```
