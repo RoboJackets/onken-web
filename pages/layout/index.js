@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
+import css from './styles.less';
 import Nav from '../components/nav';
 import { actions } from './actions';
 import NProgress from 'nprogress';
@@ -13,30 +13,18 @@ Router.onRouteChangeStart = (url) => {
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
-const PageContainer = styled.div`
-  flex: 1;
-  overflow-y: scroll;
-  height: 100vh;
-  padding-top: 90px;
-`
-
 class Layout extends Component {
   componentDidMount() {
     this.props.dispatch(actions.fetchUser())
   }
   render() {
     return (
-      <Container>
+      <div className={css.container}>
         <Nav />
-        <PageContainer>
+        <div className={css.pageContainer}>
           {this.props.children}
-        </PageContainer>
-      </Container>
+        </div>
+      </div>
     )
   }
 }

@@ -1,23 +1,23 @@
 import Table from 'antd/lib/table';
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const Container = styled.div`
-  padding: 15px;
-`
 
 const CustomTable = ({ data, onRowClickHandler }) => {
   const { dataSource, columns } = getFormattedTableData(data)
   return (dataSource && columns) ? (
-    <Container>
+    <div className="container">
       <Table dataSource={dataSource} columns={columns}
         onRow={(record) => ({
           onClick: () => onRowClickHandler(record)
         })} />
-    </Container>
+      <style jsx>{`
+      .container {
+        padding: 15px;
+      }
+    `}</style>
+    </div>
   ) : (
-      <Container>An error occured generating the table.</Container>
+      <div>An error occured generating the table.</div>
     )
 }
 

@@ -1,29 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import * as iconData from './iconData';
+import css from './styles.less';
 
-const Icon = styled.svg`
-  ${props => props.styles}
-  fill: ${props => props.theme.primaryLight[1]};
-  margin-right: 20px;
-  overflow: visible;
-`
-
-const NavIcon = ({ name, className }) => {
-  const { height, width, viewBox, paths, transform } = iconData[name]
+const NavIcon = (props) => {
+  const { height, width, viewBox, paths, transform } = iconData[props.name]
   return (
-    <Icon width={width} height={height} className={className} viewBox={viewBox}>
+    <svg width={width} height={height}
+      className={`${css.icon} ${props.className}`}
+      viewBox={viewBox}>
       {paths && paths.map((path, index) =>
         <path key={index} transform={transform} d={path}></path>
       )}
-    </Icon>
+    </svg >
   )
 }
 
 NavIcon.propTypes = {
   name: PropTypes.string.isRequired,
-  styles: PropTypes.string,
 }
 
 export default NavIcon;

@@ -1,18 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 import Link from 'next/link';
 import Breadcrumb from 'antd/lib/breadcrumb';
 import { withRouter } from 'next/router';
-import * as navItemList from '../../navItemList.json';
-
-const Container = styled.div`
-  padding-left: 30px;
-`
+import * as navItemList from '../navItemList.json';
 
 const Breadcrumbs = ({ router }) => {
   const splitPath = router && router.asPath ? router.asPath.split('/').filter(p => p !== '') : ''
   return (
-    <Container>
+    <div className="container">
       <Breadcrumb>
         {splitPath.map((link, index) => (
           <Breadcrumb.Item key={index}>
@@ -22,7 +17,12 @@ const Breadcrumbs = ({ router }) => {
           </Breadcrumb.Item>
         ))}
       </Breadcrumb>
-    </Container>
+      <style jsx>{`
+        .container {
+          padding-left: 30px;
+        }
+        `}</style>
+    </div>
   )
 }
 
