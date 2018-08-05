@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Sidenav from './sidenav';
 import Header from './header';
+import { withTheme } from 'styled-components';
 
 class Nav extends Component {
   constructor() {
@@ -9,6 +10,15 @@ class Nav extends Component {
       expanded: true,
     }
   }
+  componentDidMount = () => {
+    window.addEventListener('resize', () => {
+      const { expanded } = this.state
+      const mediaQuery = window.matchMedia(`(max-width: ${this.props.theme.sidenavWidth * 3}em)`)
+      if (mediaQuery.matches && expanded || !mediaQuery.matches && !expanded)
+        this.onMenuClicked()
+    })
+  }
+
   onMenuClicked = () => {
     this.setState({
       expanded: !this.state.expanded,
@@ -25,4 +35,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default withTheme(Nav);

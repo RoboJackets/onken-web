@@ -26,7 +26,7 @@ const theme = {
     padding: 0;
     margin: 0;
   `,
-  sidenavWidth: '300px',
+  sidenavWidth: 22,
 }
 
 class MyApp extends App {

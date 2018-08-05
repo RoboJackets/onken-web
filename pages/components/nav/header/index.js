@@ -13,7 +13,7 @@ const Container = styled.div`
 `
 
 const NavMenuContainer = styled.div`
-  min-width: ${props => props.width};
+  width: ${props => props.theme.sidenavWidth}em;
   padding: 30px;
   display: flex;
   flex-direction: row;
@@ -27,7 +27,7 @@ const StyledNavIcon = styled(NavIcon)`
 
 const Header = ({ onMenuClicked, expanded }) => (
   <Container>
-    <NavMenuContainer width="300px">
+    <NavMenuContainer>
       <MenuIcon onClick={onMenuClicked} expanded={expanded} />
       <StyledNavIcon name="onken-logo" expanded={expanded} />
     </NavMenuContainer>
