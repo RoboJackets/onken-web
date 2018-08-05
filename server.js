@@ -1,9 +1,12 @@
 const express = require('express')
+const Raven = require('raven')
 const next = require('next')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
+
+Raven.config(process.env.SENTRY_DSN).install()
 
 app.prepare()
   .then(() => {
@@ -12,6 +15,8 @@ app.prepare()
     server.get('*', (req, res) => {
       return handle(req, res)
     })
+
+    server.use(Raven.errorHandler())
 
     server.listen(3000, (err) => {
       if (err) throw err
