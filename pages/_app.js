@@ -1,6 +1,7 @@
 import App, { Container } from 'next/app';
 import React from 'react';
 import withReduxStore from '../lib/with-redux-store';
+import Raven from 'raven-js';
 import { Provider } from 'react-redux';
 import { ThemeProvider, css } from 'styled-components';
 import Layout from './layout';
@@ -38,6 +39,11 @@ class MyApp extends App {
     }
 
     return { pageProps }
+  }
+
+  constructor(...args) {
+    super(...args)
+    Raven.config(process.env.SENTRY_DSN).install()
   }
 
   render() {
