@@ -33,6 +33,7 @@ const theme = {
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {}
+    console.log('change')
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
