@@ -15,7 +15,7 @@ jobs:
           command: yarn install
       - run:
           name: Build for production
-          command: next build
+          command: yarn run build
       - save-cache:
           paths:
             - node_modules
