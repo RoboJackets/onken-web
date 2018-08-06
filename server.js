@@ -2,11 +2,13 @@ const express = require('express')
 const Raven = require('raven')
 const next = require('next')
 
+const env = require('./env.config.js')
+
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-Raven.config(process.env.SENTRY_DSN).install()
+Raven.config(env['process.env.SENTRY_DSN']).install()
 
 app.prepare()
   .then(() => {
