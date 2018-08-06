@@ -37,12 +37,7 @@ class MyApp extends App {
       pageProps = await Component.getInitialProps(ctx)
     }
 
-
     return { pageProps }
-  }
-
-  constructor(...args) {
-    super(...args)
   }
 
   render() {
