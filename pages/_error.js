@@ -2,13 +2,12 @@ import NextError from 'next/error';
 import IsomorphicRaven from '../lib/raven';
 
 class MyError extends NextError {
-  static getInitialProps = async (context) => {
+  static async getInitialProps(context) {
     if (context.err && process.env.NODE_ENV === 'production') {
       // Log error to Sentry
       IsomorphicRaven.captureException(context.err)
     }
-    const errorInitialProps = await NextError.getInitialProps(context)
-    return errorInitialProps
+    return await NextError.getInitialProps(context)
   }
 }
 
