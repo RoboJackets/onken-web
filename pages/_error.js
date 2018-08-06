@@ -7,7 +7,6 @@ class MyError extends NextError {
       // Log error to Sentry
       IsomorphicRaven.captureException(context.err)
     }
-    console.log(process.env.NODE_ENV)
     const errorInitialProps = await NextError.getInitialProps(context)
     return errorInitialProps
   }
