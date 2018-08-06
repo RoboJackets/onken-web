@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/onken-web
     docker:
-      - image: circleci/node:10-stretch
+      - image: circleci/node:latest
     steps:
       - checkout
       - restore_cache:
