@@ -11,12 +11,14 @@ class Nav extends Component {
     }
   }
   componentDidMount = () => {
-    window.addEventListener('resize', () => {
+    const onWindowResize = () => {
       const { expanded } = this.state
       const mediaQuery = window.matchMedia(`(max-width: ${this.props.theme.sidenavWidth * 3}em)`)
       if (mediaQuery.matches && expanded || !mediaQuery.matches && !expanded)
         this.onMenuClicked()
-    })
+    }
+    window.addEventListener('resize', onWindowResize)
+    onWindowResize()
   }
 
   onMenuClicked = () => {
