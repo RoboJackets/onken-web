@@ -1,5 +1,5 @@
 module.exports = {
-  presets: ['next/babel', 'react', 'es2015'],
+  presets: ['next/babel', '@babel/react'],
   plugins: [
     ["styled-components",
       {
