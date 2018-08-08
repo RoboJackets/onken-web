@@ -1,4 +1,4 @@
-const BASE_URL = "/api"
+const BASE_URL = '/api'
 
 async function resHandler(res) {
   const resultObj = {

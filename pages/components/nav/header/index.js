@@ -1,8 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import NavIcon from '../navIcon';
-import { MenuIcon, Breadcrumbs } from './components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import NavIcon from '../navIcon'
+import Breadcrumbs from './breadcrumbs'
+import MenuIcon from './menuIcon'
 
 const Container = styled.div`
   position: absolute;
@@ -40,4 +41,4 @@ Header.propTypes = {
   expanded: PropTypes.bool.isRequired,
 }
 
-export default Header;
+export default Header
