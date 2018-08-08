@@ -1,5 +1,5 @@
-import NextError from 'next/error';
-import IsomorphicRaven from '../lib/raven';
+import NextError from 'next/error'
+import IsomorphicRaven from '../lib/raven'
 
 class MyError extends NextError {
   static async getInitialProps(context) {
@@ -11,4 +11,4 @@ class MyError extends NextError {
   }
 }
 
-export default MyError;
+export default MyError

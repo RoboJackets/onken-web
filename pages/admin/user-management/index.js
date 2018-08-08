@@ -1,17 +1,23 @@
-import React, { Component } from 'react';
-import Modal from 'antd/lib/modal';
-import Select from 'antd/lib/select';
-import { CustomTable, PageHeader } from '../../components';
-import { fetchTableData } from './fetch';
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import Modal from 'antd/lib/modal'
+import Select from 'antd/lib/select'
+import { CustomTable, PageHeader } from '../../components'
+import { fetchTableData } from './fetch'
 
 const ROLES = [
-  "Administrator",
-  "Project Manager",
-  "Requestor",
-  "Read-Only",
+  'Administrator',
+  'Project Manager',
+  'Requestor',
+  'Read-Only',
 ]
 
-export default class UserManagement extends Component {
+const CustomSelect = styled(Select)`
+  width: 100%;
+`
+
+class UserManagement extends Component {
   static async getInitialProps() {
     const res = await fetchTableData()
     return {
@@ -42,7 +48,6 @@ export default class UserManagement extends Component {
     this.setState({
       tableData: newTableData,
     })
-    console.table(this.state.tableData)
   }
   onModalCancel = () => {
     this.setState({
@@ -66,12 +71,18 @@ export default class UserManagement extends Component {
           onOk={this.onModalSave}
           onCancel={this.onModalCancel}>
 
-          <Select value={modalSelectedRole} onChange={this.onModalRoleSelected} style={{ width: "100%" }}>
+          <CustomSelect value={modalSelectedRole} onChange={this.onModalRoleSelected}>
             {ROLES.map((role, index) =>
               <Select.Option key={index} value={role}>{role}</Select.Option>)}
-          </Select>
+          </CustomSelect>
         </Modal>
       </React.Fragment>
     )
   }
 }
+
+UserManagement.propTypes = {
+  tableData: PropTypes.object.isRequired,
+}
+
+export default UserManagement

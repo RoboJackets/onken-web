@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import styled from 'styled-components';
-import Nav from '../components/nav';
-import { actions } from './actions';
-import NProgress from 'nprogress';
-import Router from 'next/router';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import styled from 'styled-components'
+import Nav from '../components/nav'
+import { actions } from './actions'
+import NProgress from 'nprogress'
+import Router from 'next/router'
 
 Router.onRouteChangeStart = (url) => {
   if (window.location.pathname !== url)
@@ -39,6 +40,11 @@ class Layout extends Component {
       </Container>
     )
   }
+}
+
+Layout.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  children: PropTypes.object,
 }
 
 export default connect()(Layout)

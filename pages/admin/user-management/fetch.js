@@ -1,4 +1,4 @@
-import { BASE_URL, resHandler } from '../../fetch-base'
+import { resHandler } from '../../fetch-base'
 import fetch from 'isomorphic-unfetch'
 import * as testData from '../test-data.json'
 

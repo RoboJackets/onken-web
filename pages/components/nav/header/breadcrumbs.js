@@ -1,9 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import Link from 'next/link';
-import Breadcrumb from 'antd/lib/breadcrumb';
-import { withRouter } from 'next/router';
-import * as navItemList from '../../navItemList.json';
+import React from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import Link from 'next/link'
+import Breadcrumb from 'antd/lib/breadcrumb'
+import { withRouter } from 'next/router'
+import * as navItemList from '../navItemList.json'
 
 const Container = styled.div`
   padding-left: 30px;
@@ -40,4 +41,8 @@ const getLabelFromLink = (link) => {
   return subItemVal.label ? subItemVal.label : itemVal.label
 }
 
-export default withRouter(Breadcrumbs);
+Breadcrumbs.propTypes = {
+  router: PropTypes.object.isRequired,
+}
+
+export default withRouter(Breadcrumbs)

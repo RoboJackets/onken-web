@@ -1,5 +1,6 @@
-import Document, { Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheet, injectGlobal } from 'styled-components';
+import React from 'react'
+import Document, { Head, Main, NextScript } from 'next/document'
+import { ServerStyleSheet, injectGlobal } from 'styled-components'
 
 injectGlobal`
   body {

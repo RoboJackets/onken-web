@@ -5,7 +5,7 @@ module.exports = withLess({
     javascriptEnabled: true,
   },
   webpack: (config) => {
-    config.plugins.push(new webpack.IgnorePlugin(/^raven$/));
-    return config;
+    config.plugins.push(new webpack.IgnorePlugin(/^raven$/))
+    return config
   },
 })

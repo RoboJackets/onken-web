@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 const Container = styled.div`
   margin: 15px;
@@ -29,4 +29,4 @@ PageHeader.propTypes = {
   name: PropTypes.string.isRequired,
 }
 
-export default PageHeader;
+export default PageHeader
