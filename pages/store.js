@@ -5,7 +5,7 @@ import { userReducer } from './layout/reducers'
 
 const rootReducer = combineReducers({
   userReducer,
-})
+});
 export default function initializeStore(initialState = {}) {
   return createStore(rootReducer, initialState, applyMiddleware(thunk, logger))
 }
