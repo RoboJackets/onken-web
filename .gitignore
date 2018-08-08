@@ -40,3 +40,6 @@ jspm_packages/
 
 # VS Code directory
 .vscode/
+
+#Environment variables
+env.config.js

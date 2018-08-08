@@ -1,11 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import * as navItemList from '../navItemList.json';
-import NavItem from './navItem';
+import React from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import * as navItemList from '../navItemList.json'
+import NavItem from './navItem'
 
-const negative = (prop) => "-" + prop
+const negative = (prop) => '-' + prop
 
 const Container = styled.div`
   z-index: 500;
@@ -24,7 +24,7 @@ const Container = styled.div`
   }
 `
 
-const Sidenav = ({ expanded, user }) => (
+const Sidenav = ({ expanded }) => (
   <Container expanded={expanded}>
     {navItemList.map((item, index) => (
       <NavItem key={index} {...item} />
@@ -42,4 +42,4 @@ function mapReduxStateToProps(state) {
   }
 }
 
-export default connect(mapReduxStateToProps)(Sidenav);
+export default connect(mapReduxStateToProps)(Sidenav)

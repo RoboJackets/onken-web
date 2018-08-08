@@ -21,6 +21,11 @@ LESS CSS is used for importing and customizing the Ant Design stylesheet.
 The [Ant Design](https://ant.design/) library is used for shared resources like tables, buttons, icons, and other UI elements.
 It provides a combination of React Components and styling to make inserting UI elements quick and easy.
 
+### ESLint
+[ESLint](https://eslint.org/) Is a JavaScript linter that checks to make sure code adheres to our styling guidelines.
+
+**All Pull Requests must pass ESLint checks before they can be merged.**
+
 ## Getting started
 
 **Make sure you have the latest version of [Node](https://github.com/Microsoft/vscode-recipes/tree/master/Next-js) installed on your machine before running this application.**
@@ -32,6 +37,8 @@ git clone git@github.com:Holben888/Onken-Frontend.git
 cd Onken-Frontend
 yarn
 ```
+
+To make sure your code satisfies ESLint style checking, we recommend installing the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) in your text editor.
 
 #### Running in dev mode
 To start the project in developer mode, run `npm run dev` from the project directory.

@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import Sidenav from './sidenav';
-import Header from './header';
-import { withTheme } from 'styled-components';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import Sidenav from './sidenav'
+import Header from './header'
+import { withTheme } from 'styled-components'
 
 class Nav extends Component {
   constructor() {
@@ -37,4 +38,8 @@ class Nav extends Component {
   }
 }
 
-export default withTheme(Nav);
+Nav.propTypes = {
+  theme: PropTypes.object.isRequired,
+}
+
+export default withTheme(Nav)

@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import * as iconData from './iconData';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import * as iconData from './iconData'
 
 const Icon = styled.svg`
   ${props => props.styles}
@@ -23,7 +23,7 @@ const NavIcon = ({ name, className }) => {
 
 NavIcon.propTypes = {
   name: PropTypes.string.isRequired,
-  styles: PropTypes.string,
+  className: PropTypes.string,
 }
 
-export default NavIcon;
+export default NavIcon

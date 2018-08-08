@@ -1,7 +1,7 @@
-import Table from 'antd/lib/table';
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import Table from 'antd/lib/table'
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 const Container = styled.div`
   padding: 15px;
@@ -18,7 +18,8 @@ const CustomTable = ({ data, onRowClickHandler }) => {
           onClick: () => onRowClickHandler(record)
         })} />
     </Container>
-  ) : (
+  ) :
+    (
       <Container>An error occured generating the table.</Container>
     )
 }
@@ -58,4 +59,4 @@ const getFormattedTableData = (data) => {
   }
 }
 
-export default CustomTable;
+export default CustomTable
