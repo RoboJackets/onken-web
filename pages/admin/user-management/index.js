@@ -5,6 +5,7 @@ import Modal from 'antd/lib/modal'
 import Select from 'antd/lib/select'
 import { CustomTable, PageHeader } from '../../components'
 import { fetchTableData } from './fetch'
+import message from 'antd/lib/message'
 
 const ROLES = [
   'Administrator',
@@ -41,14 +42,33 @@ class UserManagement extends Component {
       modalVisible: true,
     })
   }
-  onModalSave = () => {
-    const { modalSelectedRole, modalData, tableData } = this.state
-    const newTableData = tableData.map((item, index) =>
-      index === modalData.key - 1 ? { ...item, Role: modalSelectedRole } : item)
-    this.setState({
-      tableData: newTableData,
+
+  saveContent = () => {
+    return new Promise((resolve) => {
+      const { modalSelectedRole, modalData, tableData } = this.state
+      const newTableData = tableData.map((item, index) => (
+        index === modalData.key - 1 ? { ...item, Role: modalSelectedRole } : item)
+      )
+      setTimeout(() => resolve(newTableData), 2000)
     })
   }
+
+  onModalSave = () => {
+    message.loading('Updating...')
+
+    this.setState({
+      modalVisible: false,
+    })
+
+    this.saveContent().then((result) => {
+      this.setState({
+        tableData: result,
+      })
+      message.destroy()
+      message.success('Role updated successfully')
+    })
+  }
+
   onModalCancel = () => {
     this.setState({
       modalVisible: false,
