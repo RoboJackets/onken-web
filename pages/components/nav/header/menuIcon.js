@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import React from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const Button = styled.button`
   ${props => props.theme.buttonBase}
@@ -47,4 +47,4 @@ MenuIcon.propTypes = {
   expanded: PropTypes.bool,
 }
 
-export default MenuIcon;
+export default MenuIcon

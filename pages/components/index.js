@@ -1,6 +1,6 @@
-import Nav from './nav';
-import CustomTable from './customTable';
-import PageHeader from './pageHeader';
+import Nav from './nav'
+import CustomTable from './customTable'
+import PageHeader from './pageHeader'
 
 export {
   Nav,

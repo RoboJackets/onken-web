@@ -1,6 +1,4 @@
-import fetch from 'isomorphic-unfetch';
-import { BASE_URL, resHandler } from '../fetch-base';
-import * as user from './test-user.json';
+import * as user from './test-user.json'
 
 export const actionTypes = {
   USER_LOAD_SUCCESS: 'LOAD_USER_SUCCESS',
@@ -9,6 +7,6 @@ export const actionTypes = {
 
 export const actions = {
   fetchUser: () => dispatch => {
-    return dispatch({ type: actionTypes.USER_LOAD_SUCCESS, payload: user });
+    return dispatch({ type: actionTypes.USER_LOAD_SUCCESS, payload: user })
   }
 }

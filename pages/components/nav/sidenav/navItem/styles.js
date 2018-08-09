@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import NavIcon from '../../navIcon';
+import styled, { css } from 'styled-components'
+import NavIcon from '../../navIcon'
 
 export const DropdownIconWrapper = styled.div`
   flex: 1;

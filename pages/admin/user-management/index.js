@@ -1,18 +1,24 @@
-import React, { Component } from 'react';
-import Modal from 'antd/lib/modal';
-import Select from 'antd/lib/select';
-import { CustomTable, PageHeader } from '../../components';
-import { fetchTableData } from './fetch';
-import message from 'antd/lib/message';
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import Modal from 'antd/lib/modal'
+import Select from 'antd/lib/select'
+import { CustomTable, PageHeader } from '../../components'
+import { fetchTableData } from './fetch'
+import message from 'antd/lib/message'
 
 const ROLES = [
-  "Administrator",
-  "Project Manager",
-  "Requestor",
-  "Read-Only",
+  'Administrator',
+  'Project Manager',
+  'Requestor',
+  'Read-Only',
 ]
 
-export default class UserManagement extends Component {
+const CustomSelect = styled(Select)`
+  width: 100%;
+`
+
+class UserManagement extends Component {
   static async getInitialProps() {
     const res = await fetchTableData()
     return {
@@ -38,33 +44,29 @@ export default class UserManagement extends Component {
   }
 
   saveContent = () => {
-    var currentContext = this;
-    return new Promise(function(resolve){
+    var currentContext = this
+    return new Promise((resolve) => {
       const { modalSelectedRole, modalData, tableData } = currentContext.state
       const newTableData = tableData.map((item, index) =>
         index === modalData.key - 1 ? { ...item, Role: modalSelectedRole } : item)
-        setTimeout(function(){
-          resolve(newTableData);
-        },2000)
-
-      console.table(currentContext.state.tableData)
-    });
+        setTimeout(() => resolve(newTableData), 2000)
+    })
   }
 
   onModalSave = () => {
-    var updateGridData = this;
-    message.loading("updating...");
-    updateGridData.setState({
+    message.loading("updating...")
+    
+    this.setState({
       modalVisible: false,
     })
-
-    updateGridData.saveContent().then(function(result){
-      updateGridData.setState({
-        tableData: result
+    
+    this.saveContent().then((result) => {
+      this.setState({
+        tableData: result,
       })
-      message.destroy();
-      message.success("Role updated successfully");
-    });
+      message.destroy()
+      message.success("Role updated successfully")
+    })
   }
 
   onModalCancel = () => {
@@ -89,12 +91,18 @@ export default class UserManagement extends Component {
           onOk={this.onModalSave}
           onCancel={this.onModalCancel}>
 
-          <Select value={modalSelectedRole} onChange={this.onModalRoleSelected} style={{ width: "100%" }}>
+          <CustomSelect value={modalSelectedRole} onChange={this.onModalRoleSelected}>
             {ROLES.map((role, index) =>
               <Select.Option key={index} value={role}>{role}</Select.Option>)}
-          </Select>
+          </CustomSelect>
         </Modal>
       </React.Fragment>
     )
   }
 }
+
+UserManagement.propTypes = {
+  tableData: PropTypes.object.isRequired,
+}
+
+export default UserManagement

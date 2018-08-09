@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Sidenav from './sidenav';
-import Header from './header';
+import React, { Component } from 'react'
+import Sidenav from './sidenav'
+import Header from './header'
 
 class Nav extends Component {
   constructor() {
@@ -25,4 +25,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default Nav
