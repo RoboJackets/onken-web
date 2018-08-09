@@ -1,11 +1,11 @@
-import App, { Container } from 'next/app';
-import React from 'react';
-import withReduxStore from '../lib/with-redux-store';
-import { Provider } from 'react-redux';
-import { ThemeProvider, css } from 'styled-components';
-import Layout from './layout';
+import App, { Container } from 'next/app'
+import React from 'react'
+import withReduxStore from '../lib/with-redux-store'
+import { Provider } from 'react-redux'
+import { ThemeProvider, css } from 'styled-components'
+import Layout from './layout'
 
-import './antd-styles.less';
+import './antd-styles.less'
 
 const theme = {
   primaryDark: {
@@ -56,4 +56,4 @@ class MyApp extends App {
   }
 }
 
-export default withReduxStore(MyApp);
+export default withReduxStore(MyApp)

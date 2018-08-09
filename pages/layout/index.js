@@ -39,7 +39,8 @@ class Layout extends Component {
     this.setState({ showNav: !this.state.showNav })
   }
   shouldComponentUpdate = (nextProps, nextState) => {
-    return this.state.showNav !== nextState.showNav
+    return this.state.showNav !== nextState.showNav ||
+      this.props.children !== nextProps.children
   }
   componentDidMount = () => {
     window.addEventListener('resize', this.onWindowResize)
