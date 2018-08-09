@@ -44,28 +44,28 @@ class UserManagement extends Component {
   }
 
   saveContent = () => {
-    var currentContext = this
     return new Promise((resolve) => {
-      const { modalSelectedRole, modalData, tableData } = currentContext.state
-      const newTableData = tableData.map((item, index) =>
+      const { modalSelectedRole, modalData, tableData } = this.state
+      const newTableData = tableData.map((item, index) => (
         index === modalData.key - 1 ? { ...item, Role: modalSelectedRole } : item)
-        setTimeout(() => resolve(newTableData), 2000)
+      )
+      setTimeout(() => resolve(newTableData), 2000)
     })
   }
 
   onModalSave = () => {
-    message.loading("updating...")
-    
+    message.loading('Updating...')
+
     this.setState({
       modalVisible: false,
     })
-    
+
     this.saveContent().then((result) => {
       this.setState({
         tableData: result,
       })
       message.destroy()
-      message.success("Role updated successfully")
+      message.success('Role updated successfully')
     })
   }
 
