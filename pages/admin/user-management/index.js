@@ -102,7 +102,7 @@ class UserManagement extends Component {
 }
 
 UserManagement.propTypes = {
-  tableData: PropTypes.object.isRequired,
+  tableData: PropTypes.array.isRequired,
 }
 
 export default UserManagement

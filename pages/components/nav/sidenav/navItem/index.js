@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
-import Link from 'next/link';
-import * as styles from './styles';
-import NavIcon from '../../navIcon';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import Link from 'next/link'
+import * as styles from './styles'
+import NavIcon from '../../navIcon'
 
 const { Button, Content, DropdownIconWrapper, StyledNavIcon } = styles
 
-export default class NavItem extends Component {
+class NavItem extends Component {
   constructor() {
     super()
     this.state = {
@@ -49,3 +50,13 @@ export default class NavItem extends Component {
     )
   }
 }
+
+NavItem.propTypes = {
+  link: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  icon: PropTypes.string,
+  subItems: PropTypes.array,
+  subItemLinksOnly: PropTypes.bool,
+}
+
+export default NavItem

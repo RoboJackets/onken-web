@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import styled from 'styled-components'
+import styled, { withTheme } from 'styled-components'
 import Nav from '../components/nav'
 import { actions } from './actions'
 import NProgress from 'nprogress'
@@ -27,13 +27,30 @@ const PageContainer = styled.div`
 `
 
 class Layout extends Component {
-  componentDidMount() {
+  constructor() {
+    super()
+    this.state = {}
+  }
+  onWindowResize = () => {
+    const isNarrow = window.matchMedia(`(max-width: ${this.props.theme.sidenavWidth * 3}em)`).matches
+    this.setState({ showNav: !isNarrow })
+  }
+  onToggleNav = () => {
+    this.setState({ showNav: !this.state.showNav })
+  }
+  shouldComponentUpdate = (nextProps, nextState) => {
+    return this.state.showNav !== nextState.showNav ||
+      this.props.children !== nextProps.children
+  }
+  componentDidMount = () => {
+    window.addEventListener('resize', this.onWindowResize)
+    this.onWindowResize()
     this.props.dispatch(actions.fetchUser())
   }
   render() {
-    return (
+    return this.state.hasOwnProperty('showNav') && (
       <Container>
-        <Nav />
+        <Nav showNav={this.state.showNav} onToggleNav={this.onToggleNav} />
         <PageContainer>
           {this.props.children}
         </PageContainer>
@@ -45,6 +62,7 @@ class Layout extends Component {
 Layout.propTypes = {
   dispatch: PropTypes.func.isRequired,
   children: PropTypes.object,
+  theme: PropTypes.object.isRequired,
 }
 
-export default connect()(Layout)
+export default withTheme(connect()(Layout))

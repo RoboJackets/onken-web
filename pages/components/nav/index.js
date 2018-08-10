@@ -1,28 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import Sidenav from './sidenav'
 import Header from './header'
 
-class Nav extends Component {
-  constructor() {
-    super()
-    this.state = {
-      expanded: true,
-    }
-  }
-  onMenuClicked = () => {
-    this.setState({
-      expanded: !this.state.expanded,
-    })
-  }
-  render() {
-    const { expanded } = this.state
-    return (
-      <React.Fragment>
-        <Header expanded={expanded} onMenuClicked={this.onMenuClicked} />
-        <Sidenav expanded={expanded} />
-      </React.Fragment>
-    )
-  }
+const Nav = ({ showNav, onToggleNav }) => (
+  <React.Fragment>
+    <Header expanded={showNav} onMenuClicked={onToggleNav} />
+    <Sidenav expanded={showNav} />
+  </React.Fragment>
+)
+
+Nav.propTypes = {
+  showNav: PropTypes.bool.isRequired,
+  onToggleNav: PropTypes.func.isRequired,
 }
 
 export default Nav
