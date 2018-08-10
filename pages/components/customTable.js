@@ -9,9 +9,11 @@ const Container = styled.div`
 
 const CustomTable = ({ data, onRowClickHandler }) => {
   const { dataSource, columns } = getFormattedTableData(data)
+  const xScrollThreshold = columns.length * 150
   return (dataSource && columns) ? (
     <Container>
       <Table dataSource={dataSource} columns={columns}
+        scroll={{ x: xScrollThreshold }}
         onRow={(record) => ({
           onClick: () => onRowClickHandler(record)
         })} />
