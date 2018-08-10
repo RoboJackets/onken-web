@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Modal from 'antd/lib/modal'
 import Select from 'antd/lib/select'
 import { CustomTable, PageHeader } from '../../components'
-import { fetchTableData } from './fetch'
+import { fetchSampleTableData, fetchTableData } from './fetch'
 import message from 'antd/lib/message'
 
 const ROLES = [
@@ -19,8 +19,9 @@ const CustomSelect = styled(Select)`
 `
 
 class UserManagement extends Component {
-  static async getInitialProps() {
-    const res = await fetchTableData()
+  static async getInitialProps({ req }) {
+    const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : ''
+    const res = await fetchTableData(baseUrl)
     return {
       tableData: res,
     }
@@ -34,6 +35,16 @@ class UserManagement extends Component {
       modalConfirmLoading: false,
       modalSelectedRole: '',
     }
+  }
+  async componentDidMount() {
+    // const response = JSON.stringify(
+    //   await window
+    //     .fetch('/api/users/')
+    //     .then(response => response.json().then(data => data)),
+    //   null,
+    //   2
+    // )
+    // console.log(response)
   }
   onRowClickHandler = (data) => {
     this.setState({
@@ -102,7 +113,7 @@ class UserManagement extends Component {
 }
 
 UserManagement.propTypes = {
-  tableData: PropTypes.object.isRequired,
+  tableData: PropTypes.array.isRequired,
 }
 
 export default UserManagement

@@ -1,6 +1,4 @@
-const BASE_URL = '/api'
-
-async function resHandler(res) {
+export async function resHandler(res) {
   const resultObj = {
     data: null,
     failed: false,
@@ -11,9 +9,4 @@ async function resHandler(res) {
     resultObj.data = await res.json()
 
   return resultObj
-}
-
-export {
-  BASE_URL,
-  resHandler
 }

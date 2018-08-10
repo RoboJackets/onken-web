@@ -10,7 +10,7 @@ const app = next({
 
 const devProxy = {
   '/api': {
-    target: 'https://localhost:5000/api/',
+    target: 'http://onken.local:8000/api/', //Set to match your local Onken config
     pathRewrite: { '^/api': '/' },
     changeOrigin: true
   }
