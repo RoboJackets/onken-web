@@ -8,10 +8,15 @@ const app = next({
   dev,
 })
 
+const devBaseUrl = 'http://onken.local:8000' //Set to match your local Onken config
+
 const devProxy = {
   '/api': {
-    target: 'http://onken.local:8000/api/', //Set to match your local Onken config
-    pathRewrite: { '^/api': '/' },
+    target: devBaseUrl,
+    changeOrigin: true
+  },
+  '/login': {
+    target: devBaseUrl,
     changeOrigin: true
   }
 }

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styled, { withTheme } from 'styled-components'
 import Nav from '../components/nav'
-import { actions } from './actions'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 
@@ -13,6 +12,20 @@ Router.onRouteChangeStart = (url) => {
 }
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
+
+const objIsEmpty = (obj) => {
+  if (obj == null) return true
+  if (obj.length > 0) return false
+  if (obj.length === 0) return true
+
+  if (typeof obj !== 'object') return true
+
+  for (var key in obj) {
+    if (hasOwnProperty.call(obj, key)) return false
+  }
+
+  return true
+}
 
 const Container = styled.div`
   display: flex;
@@ -43,9 +56,12 @@ class Layout extends Component {
       this.props.children !== nextProps.children
   }
   componentDidMount = () => {
+    // if (objIsEmpty(this.props.user))
+    //   window.location.pathname = '/login'
+
     window.addEventListener('resize', this.onWindowResize)
     this.onWindowResize()
-    this.props.dispatch(actions.fetchUser())
+    // this.props.dispatch(actions.fetchUser())
   }
   render() {
     return this.state.hasOwnProperty('showNav') && (
@@ -59,10 +75,17 @@ class Layout extends Component {
   }
 }
 
+function mapReduxStateToProps(state) {
+  return {
+    user: state.userReducer.user,
+  }
+}
+
 Layout.propTypes = {
   dispatch: PropTypes.func.isRequired,
   children: PropTypes.object,
   theme: PropTypes.object.isRequired,
+  user: PropTypes.object,
 }
 
-export default withTheme(connect()(Layout))
+export default withTheme(connect(mapReduxStateToProps)(Layout))
