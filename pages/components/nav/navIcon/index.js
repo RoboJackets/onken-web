@@ -11,7 +11,7 @@ const Icon = styled.svg`
 `
 
 const NavIcon = ({ name, className }) => {
-  const { height, width, viewBox, paths, transform } = iconData[name]
+  const { height, width, viewBox, paths, transform } = iconData.default[name]
   return (
     <Icon width={width} height={height} className={className} viewBox={viewBox}>
       {paths && paths.map((path, index) =>

@@ -25,7 +25,7 @@ const Container = styled.div`
 
 const Sidenav = ({ expanded }) => (
   <Container expanded={expanded}>
-    {navItemList.map((item, index) => (
+    {navItemList.default.map((item, index) => (
       <NavItem key={index} {...item} />
     ))}
   </Container>

@@ -1,6 +1,6 @@
 import App, { Container } from 'next/app'
 import React from 'react'
-import { ThemeProvider, css } from 'styled-components'
+import { ThemeProvider, css, createGlobalStyle } from 'styled-components'
 import Layout from './layout'
 
 import './antd-styles.less'
@@ -27,6 +27,16 @@ const theme = {
   sidenavWidth: 22,
 }
 
+const GlobalStyles = createGlobalStyle`
+  body {
+    overflow: hidden;
+  }
+
+  * {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif !important;
+  }
+`
+
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {}
@@ -42,6 +52,7 @@ class MyApp extends App {
     const { Component, pageProps } = this.props
     return (
       <Container>
+        <GlobalStyles />
         <ThemeProvider theme={theme}>
           <Layout>
             <Component {...pageProps} />

@@ -27,7 +27,9 @@ const PageContainer = styled.div`
 class Layout extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      showNav: true
+    }
   }
   onWindowResize = () => {
     const isNarrow = window.matchMedia(`(max-width: ${this.props.theme.sidenavWidth * 3}em)`).matches
@@ -57,7 +59,6 @@ class Layout extends Component {
 }
 
 Layout.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   children: PropTypes.object,
   theme: PropTypes.object.isRequired,
 }

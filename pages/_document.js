@@ -1,16 +1,7 @@
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
-import { ServerStyleSheet, injectGlobal } from 'styled-components'
+import { ServerStyleSheet } from 'styled-components'
 
-injectGlobal`
-  body {
-    overflow: hidden;
-  }
-
-  * {
-    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif !important;
-  }
-`
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
