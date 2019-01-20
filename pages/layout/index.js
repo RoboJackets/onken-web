@@ -4,6 +4,7 @@ import styled, { withTheme } from 'styled-components'
 import Nav from '../components/nav'
 import NProgress from 'nprogress'
 import Router from 'next/router'
+import { UserProvider } from '../components/providers/userProvider'
 
 Router.onRouteChangeStart = (url) => {
   if (window.location.pathname !== url)
@@ -24,11 +25,13 @@ const PageContainer = styled.div`
   padding-top: 90px;
 `
 
+const UserContext = React.createContext()
+
 class Layout extends Component {
   constructor() {
     super()
     this.state = {
-      showNav: true
+      showNav: true,
     }
   }
   onWindowResize = () => {
@@ -49,10 +52,12 @@ class Layout extends Component {
   render() {
     return this.state.hasOwnProperty('showNav') && (
       <Container>
-        <Nav showNav={this.state.showNav} onToggleNav={this.onToggleNav} />
-        <PageContainer>
-          {this.props.children}
-        </PageContainer>
+        <UserProvider>
+          <Nav showNav={this.state.showNav} onToggleNav={this.onToggleNav} />
+          <PageContainer>
+            {this.props.children}
+          </PageContainer>
+        </UserProvider>
       </Container>
     )
   }
@@ -64,3 +69,4 @@ Layout.propTypes = {
 }
 
 export default withTheme(Layout)
+export { UserContext }
