@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import * as navItemList from '../navItemList.json'
@@ -36,10 +35,4 @@ Sidenav.propTypes = {
   expanded: PropTypes.bool.isRequired,
 }
 
-function mapReduxStateToProps(state) {
-  return {
-    user: state.userReducer.user,
-  }
-}
-
-export default connect(mapReduxStateToProps)(Sidenav)
+export default Sidenav

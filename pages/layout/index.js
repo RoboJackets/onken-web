@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import styled, { withTheme } from 'styled-components'
 import Nav from '../components/nav'
-import { actions } from './actions'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 
@@ -45,7 +43,6 @@ class Layout extends Component {
   componentDidMount = () => {
     window.addEventListener('resize', this.onWindowResize)
     this.onWindowResize()
-    this.props.dispatch(actions.fetchUser())
   }
   render() {
     return this.state.hasOwnProperty('showNav') && (
@@ -65,4 +62,4 @@ Layout.propTypes = {
   theme: PropTypes.object.isRequired,
 }
 
-export default withTheme(connect()(Layout))
+export default withTheme(Layout)
