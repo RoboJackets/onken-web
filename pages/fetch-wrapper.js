@@ -1,8 +1,8 @@
-import fetch from 'isomorphic-unfetch'
+import unfetch from 'isomorphic-unfetch'
 
-this.fetch = async function (req, pathname) {
+const fetch = async (req, pathname) => {
   const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : ''
-  const res = await fetch(`${baseUrl}/${pathname}`)
+  const res = await unfetch(`${baseUrl}/${pathname}`)
 
   const resultObj = {
     data: null,
@@ -16,4 +16,4 @@ this.fetch = async function (req, pathname) {
   return resultObj
 }
 
-export default this.fetch
+export default fetch

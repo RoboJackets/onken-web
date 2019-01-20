@@ -13,20 +13,6 @@ Router.onRouteChangeStart = (url) => {
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
-const objIsEmpty = (obj) => {
-  if (obj == null) return true
-  if (obj.length > 0) return false
-  if (obj.length === 0) return true
-
-  if (typeof obj !== 'object') return true
-
-  for (var key in obj) {
-    if (hasOwnProperty.call(obj, key)) return false
-  }
-
-  return true
-}
-
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -56,9 +42,6 @@ class Layout extends Component {
       this.props.children !== nextProps.children
   }
   componentDidMount = () => {
-    // if (objIsEmpty(this.props.user))
-    //   window.location.pathname = '/login'
-
     window.addEventListener('resize', this.onWindowResize)
     this.onWindowResize()
     // this.props.dispatch(actions.fetchUser())
