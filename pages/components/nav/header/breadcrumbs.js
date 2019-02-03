@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Breadcrumb from 'antd/lib/breadcrumb'
 import { withRouter } from 'next/router'
-import * as navItemList from '../navItemList.json'
+import { navItems } from '../index'
 
 const Container = styled.div`
   padding-left: 30px;
@@ -30,7 +30,7 @@ const Breadcrumbs = ({ router }) => {
 const getLabelFromLink = (link) => {
   link = '/' + link
   let subItemVal = ''
-  const itemVal = navItemList.find(item => {
+  const itemVal = navItems.find(item => {
     if (item.link !== link && item.subItems) {
       subItemVal = item.subItems.find(subItem => subItem.link === link)
     }

@@ -1,9 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import * as navItemList from '../navItemList.json'
 import NavItem from './navItem'
+import { UserConsumer } from '../../providers/userProvider.js'
 
 const negative = (prop) => '-' + prop
 
@@ -24,22 +23,23 @@ const Container = styled.div`
   }
 `
 
-const Sidenav = ({ expanded }) => (
-  <Container expanded={expanded}>
-    {navItemList.map((item, index) => (
-      <NavItem key={index} {...item} />
-    ))}
-  </Container>
+const Sidenav = ({ expanded, navItems }) => (
+  <UserConsumer>
+    {({ user }) => (
+      <Container expanded={expanded}>
+        {navItems
+          .filter(item => !(item.label === 'Admin Tools' && user.role !== 'Admin'))
+          .map((item, index) => (
+            <NavItem key={index} {...item} />
+          ))}
+      </Container>
+    )}
+  </UserConsumer>
 )
 
 Sidenav.propTypes = {
   expanded: PropTypes.bool.isRequired,
+  navItems: PropTypes.array.isRequired,
 }
 
-function mapReduxStateToProps(state) {
-  return {
-    user: state.userReducer.user,
-  }
-}
-
-export default connect(mapReduxStateToProps)(Sidenav)
+export default Sidenav

@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import styled, { withTheme } from 'styled-components'
 import Nav from '../components/nav'
-import { actions } from './actions'
 import NProgress from 'nprogress'
 import Router from 'next/router'
+import { UserProvider } from '../components/providers/userProvider'
 
 Router.onRouteChangeStart = (url) => {
   if (window.location.pathname !== url)
@@ -26,10 +25,14 @@ const PageContainer = styled.div`
   padding-top: 90px;
 `
 
+const UserContext = React.createContext()
+
 class Layout extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      showNav: true,
+    }
   }
   onWindowResize = () => {
     const isNarrow = window.matchMedia(`(max-width: ${this.props.theme.sidenavWidth * 3}em)`).matches
@@ -45,24 +48,25 @@ class Layout extends Component {
   componentDidMount = () => {
     window.addEventListener('resize', this.onWindowResize)
     this.onWindowResize()
-    this.props.dispatch(actions.fetchUser())
   }
   render() {
     return this.state.hasOwnProperty('showNav') && (
       <Container>
-        <Nav showNav={this.state.showNav} onToggleNav={this.onToggleNav} />
-        <PageContainer>
-          {this.props.children}
-        </PageContainer>
+        <UserProvider>
+          <Nav showNav={this.state.showNav} onToggleNav={this.onToggleNav} />
+          <PageContainer>
+            {this.props.children}
+          </PageContainer>
+        </UserProvider>
       </Container>
     )
   }
 }
 
 Layout.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   children: PropTypes.object,
   theme: PropTypes.object.isRequired,
 }
 
-export default withTheme(connect()(Layout))
+export default withTheme(Layout)
+export { UserContext }
